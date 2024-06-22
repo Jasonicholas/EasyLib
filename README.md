@@ -7,3 +7,6 @@ Merupakan sebuah web service yang mempermudah penggunanya dalam meminjam buku di
 
 ## file path untuk controller
 ~/app/Http/Controllers
+
+## route dapat dilihat di
+~routes/web.php
