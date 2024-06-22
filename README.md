@@ -6,4 +6,4 @@ Merupakan sebuah web service yang mempermudah penggunanya dalam meminjam buku di
 ~/resources/views
 
 ## file path untuk controller
-~/
+~/app/Http/Controllers
