@@ -18,5 +18,15 @@ class ReaderController extends Controller
         return view('viewBook', compact('books'));
     }
 
+    public function storeBook (Request $request){
+        
+        $request->validate([
+        ]);
+
+       
+        Book::create([
+        ]);
+        return redirect('/');
+    }
 
 }

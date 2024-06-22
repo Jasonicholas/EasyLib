@@ -40,6 +40,8 @@ Route::get('/view-reader', [ReaderController::class, 'viewReader']);
 
 Route::get('/view-book', [ReaderController::class,  'viewBook']);
 
-Route::get('/collection', [BookController::class, 'showCollection']);
+Route::get('/collection', [BookController::class, 'showCollection'])->name('home');
 
 Route::get('/detail-book/{id}', [BookController::class, 'showBook'])->name('detail');
+
+Route::get('/payment/{id})', [BookController::class, 'showPayment'])->name('payment');

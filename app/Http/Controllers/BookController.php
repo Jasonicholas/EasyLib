@@ -17,11 +17,11 @@ class BookController extends Controller
         
         $request->validate([
             'Title'=> 'required|unique:books,Title,except,id',
-            'PublicationDate'=> 'required',
+            'PubDate'=> 'required',
             'Author'=> 'required|min:5',
             'ISBN'=> 'required|min:13|integer',
             'Publisher'=> 'required|min:5',
-            'Printlength'=> 'required|integer|gt:15',
+            'PrintLength'=> 'required|integer|gt:15',
             'Stock'=> 'required|integer|gt:5',
             'Image'=> 'required|mimes:png,jpg'
         ]);
@@ -58,6 +58,11 @@ class BookController extends Controller
         return view('bookdetail', compact('book') );
     }
 
+    public function showPayment($id){
+        $book = Book::findOrFail($id);
+        return view('payment', compact('book') );
+    }
+
     public function edit($id){
         $categories = Category::all();
         $book = Book::findOrFail($id);
@@ -66,16 +71,16 @@ class BookController extends Controller
 
     public function update (Request $request, $id){
                
-        // $request->validate([
-        //     'Title'=> 'required',
-        //     'PublicationDate'=> 'required',
-        //     'Author'=> 'required|min:5',
-        //     'ISBN'=> 'required|min:13|integer',
-        //     'Publisher'=> 'required|min:5',
-        //     'Printlength'=> 'required|integer|gt:15',
-        //     'Stock'=> 'required|integer|gt:5',
-        //     'Image'=> 'required|mimes:png,jpg'
-        // ]);
+        $request->validate([
+            'Title'=> 'required',
+            'PublicationDate'=> 'required',
+            'Author'=> 'required|min:5',
+            'ISBN'=> 'required|min:13|integer',
+            'Publisher'=> 'required|min:5',
+            'Printlength'=> 'required|integer|gt:15',
+            'Stock'=> 'required|integer|gt:5',
+            'Image'=> 'required|mimes:png,jpg'
+        ]);
 
         $extension = $request->file('Image')->getClientOriginalExtension();
         $fileName = $request->Title.'_'.$request->Author.'.'.$extension;
