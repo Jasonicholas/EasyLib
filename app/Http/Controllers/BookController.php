@@ -101,12 +101,12 @@ class BookController extends Controller
         return redirect('/');
     }
     
-    public function updateStock($id){
-        Book::findOrFail($id)->update([
-            'Stock'=> $stock-1,
-        ]);
-        return redirect('/collection');
-    }
+    // public function updateStock($id){
+    //     Book::findOrFail($id)->update([
+    //         'Stock'=> $stock-1,
+    //     ]);
+    //     return redirect('/collection');
+    // }
 
 
     public function delete($id){

@@ -10,7 +10,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{route('custhome')}}">EasyLib</a>
+      <a class="navbar-brand" href="{{route('home')}}">EasyLib</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,9 +35,9 @@
 
         @foreach ($books as $book)
         <div class="col">
-          <div class="card " style="width: 18rem;">
-            <img src="{{asset('/storage/image/'.$book->Image)}}" class="card-img-top" alt="...">
-            <div class="card-body">
+          <div class="card" style="width: 15rem; align-items: center;">
+            <img src="{{asset('/storage/image/'.$book->Image)}}" style="width: 120px; height :200px; " class="card-img-top" alt="...">
+            <div class="card-body" style="text-align: center">
               <h5 class="card-title">{{$book->Author}}</h5>
               <h2 class="card-title">{{$book->Title}}</h2>
               {{-- <p class="card-text">{{$book->PublicationDate}}</p>
@@ -46,9 +46,9 @@
               <p class="card-text">Print length: {{$book->PrintLength}}</p>
               <p class="card-text">Category: {{$book->category->CategoryName}}</p> --}}
               @if ($book->Stock > 0)
-              <p class="card-text">Status: Ready</p>
+              <p class="card-text" style="font-size: 15px; margin: 0 0 10px;">Status: Ready</p>
               @else
-              <p class="card-text">Status: Not Ready</p>   
+              <p class="card-text" style="font-size: 15px; margin: 0 0 10px;">Status: Not Ready</p>   
               @endif
               {{-- <a href="#" class="btn btn-primary">edit</a> --}}
               <a href="{{route('detail', $book->id)}}" class="btn btn-primary">Order</a>
