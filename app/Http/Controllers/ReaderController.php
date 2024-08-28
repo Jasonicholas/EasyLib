@@ -18,15 +18,22 @@ class ReaderController extends Controller
         return view('viewBook', compact('books'));
     }
 
-    public function storeBook (Request $request){
-        
-        $request->validate([
-        ]);
+    public function storeReader (Request $request, $id){
+         
 
-       
-        Book::create([
+        $reader = Reader::create([
+            'ReaderName'=>$request->ReaderName,
+            'ReaderEmail'=>$request->ReaderEmail,
+            'Address'=>$request->Address,
+            'Shipping'=>$request->Shipping,
+            'PaymentMethod'=>$request->PaymentMethod,
         ]);
-        return redirect('/');
+        $book = Book::find($id);
+        $book->readers()->attach($reader->id);
+        $book->update([
+            'Stock'=> ($book->Stock) - 1
+        ]);
+        return redirect('/collection'); 
     }
 
 }

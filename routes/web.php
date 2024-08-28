@@ -40,8 +40,12 @@ Route::get('/view-reader', [ReaderController::class, 'viewReader']);
 
 Route::get('/view-book', [ReaderController::class,  'viewBook']);
 
-Route::get('/collection', [BookController::class, 'showCollection'])->name('home');
+Route::get('/collection', [BookController::class, 'showCollection'])->name('custhome');
 
 Route::get('/detail-book/{id}', [BookController::class, 'showBook'])->name('detail');
 
-Route::get('/payment/{id})', [BookController::class, 'showPayment'])->name('payment');
+Route::get('/book-payment/{id}', [BookController::class, 'showPayment'])->name('payment');
+
+Route::post('/store-reader/{id}', [ReaderController::class, 'storeReader'])->name('addreader');
+
+// Route::patch('/update-stock/{id}', [BookController::class, 'updateStock']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Book;
+use App\Models\Reader;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -22,8 +23,8 @@ class BookController extends Controller
             'ISBN'=> 'required|min:13|integer',
             'Publisher'=> 'required|min:5',
             'PrintLength'=> 'required|integer|gt:15',
-            'Stock'=> 'required|integer|gt:5',
-            'Image'=> 'required|mimes:png,jpg'
+            'Stock'=> 'required|integer|gt:0',
+            'Image'=> 'required|mimes:png,jpg,jpeg'
         ]);
 
         $extension = $request->file('Image')->getClientOriginalExtension();
@@ -35,7 +36,7 @@ class BookController extends Controller
             'Author'=> $request->Author,
             'ISBN'=> $request->ISBN,
             'Publisher'=> $request->Publisher,
-            'Printlength'=> $request->PrintLength,
+            'PrintLength'=> $request->PrintLength,
             'Category_Id'=> $request->CategoryName,
             'Stock'=> $request->Stock,
             'Image'=> $fileName
@@ -73,11 +74,11 @@ class BookController extends Controller
                
         $request->validate([
             'Title'=> 'required',
-            'PublicationDate'=> 'required',
+            'PubDate'=> 'required',
             'Author'=> 'required|min:5',
             'ISBN'=> 'required|min:13|integer',
             'Publisher'=> 'required|min:5',
-            'Printlength'=> 'required|integer|gt:15',
+            'PrintLength'=> 'required|integer|gt:15',
             'Stock'=> 'required|integer|gt:5',
             'Image'=> 'required|mimes:png,jpg'
         ]);
@@ -92,7 +93,7 @@ class BookController extends Controller
             'Author'=> $request->Author,
             'ISBN'=> $request->ISBN,
             'Publisher'=> $request->Publisher,
-            'Printlength'=> $request->PrintLength,
+            'PrintLength'=> $request->PrintLength,
             'Category_Id'=> $request->CategoryName,
             'Stock'=> $request->Stock,
             'Image'=> $fileName
@@ -100,6 +101,14 @@ class BookController extends Controller
         return redirect('/');
     }
     
+    public function updateStock($id){
+        Book::findOrFail($id)->update([
+            'Stock'=> $stock-1,
+        ]);
+        return redirect('/collection');
+    }
+
+
     public function delete($id){
         Book::destroy($id);
         return redirect('/');

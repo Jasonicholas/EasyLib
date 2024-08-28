@@ -10,7 +10,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{route('home')}}">EasyLib</a>
+      <a class="navbar-brand" href="{{route('home')}}">EasyLib (Admin)</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,15 +41,15 @@
   </nav>
     
   <div class="m-5">
-    
-    <div class="flex-nowrap">
-      <h1>Book List</h1>
+    <h1>Book List</h1>
+    <div class="d-flex flex-nowrap">
+      
       @foreach ($books as $book)
-      <div class="col gx-4">
+      <div class="col">
         <div class="card" style="width: 18rem;">
             <img src="{{asset('/storage/image/'.$book->Image)}}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h4 class="card-title">{{$book->Author}}</h4>
+              <h5 class="card-title">{{$book->Author}}</h5>
               <h2 class="card-title">{{$book->Title}}</h2>
               <p class="card-text">{{$book->PublicationDate}}</p>
               <p class="card-text">{{$book->Publisher}}</p>
@@ -64,12 +64,12 @@
                 <button class="btn btn-danger">Delete</button>
               </form>
             </div>
-          </div>
-        
+        </div>
       </div>
       @endforeach 
-    </div>
-    </div>
+    
+  </div>
+  </div>
   
     
 </body>

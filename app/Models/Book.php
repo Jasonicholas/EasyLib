@@ -15,7 +15,7 @@ class Book extends Model
         'Author',
         'ISBN',
         'Publisher',
-        'Printlength',
+        'PrintLength',
         'Category_Id',
         'Stock',
         'Image'

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Page</title>
+    <title>reader view</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{route('home')}}">EasyLib</a>
+      <a class="navbar-brand" href="{{route('home')}}">EasyLib (Admin)</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,6 +48,10 @@
               <th scope="col">No</th>
               <th scope="col">Name</th>
               <th scope="col">Book</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+              <th scope="col">Shipping</th>
+              <th scope="col">PaymentMethod</th>
             </tr>
           </thead>
           <tbody>
@@ -57,10 +61,14 @@
                   <td>{{$reader->ReaderName}}</td>
                   <td>
                       @foreach ($reader->books as $item)
-                          - {{$item->Title}} <br>
+                          {{$item->Title}} <br>
                       @endforeach
                   </td>
-                </tr>
+                  <td>{{$reader->ReaderEmail}}</td>
+                  <td>{{$reader->Address}}</td>
+                  <td>{{$reader->Shipping}}</td>
+                  <td>{{$reader->PaymentMethod}}</td>
+              </tr>
               @endforeach
           </tbody>
         </table>
